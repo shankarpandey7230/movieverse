@@ -19,3 +19,9 @@ import AddIcon from "@mui/icons-material/Add";
 # getting Button icon from Mui
 
 import { Button } from "@mui/material";
+
+# create single movie card component
+
+# For the rating install stars
+
+npm install react-stars
