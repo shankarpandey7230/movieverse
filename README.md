@@ -25,3 +25,10 @@ import { Button } from "@mui/material";
 # For the rating install stars
 
 npm install react-stars
+
+# install react router dom react-loader-spinner and sweet alert
+
+# npm install react-router-dom react-loader-spinner sweet-alert
+
+For prebuild components in case of Tailwind
+use # Tailblocks.cc
