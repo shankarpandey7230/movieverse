@@ -32,3 +32,25 @@ npm install react-stars
 
 For prebuild components in case of Tailwind
 use # Tailblocks.cc
+
+https://firebase.google.com/
+
+# install firebase
+
+npm install firebase
+
+# create project movies
+
+# create database
+
+Change the rules of firebase to true
+
+rules_version = '2';
+
+service cloud.firestore {
+match /databases/{database}/documents {
+match /{document=\*\*} {
+allow read, write: if true;
+}
+}
+}

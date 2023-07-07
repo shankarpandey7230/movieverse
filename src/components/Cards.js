@@ -1,41 +1,59 @@
-import React, { useState } from "react";
+import { getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { Audio, ThreeDots } from "react-loader-spinner";
 import ReactStars from "react-stars";
+import { moviesRef } from "../firebase/firebase";
 
 const Cards = () => {
-  const [data, setData] = useState([
-    {
-      name: "Avengers Endagame",
-      year: "2019",
-      rating: 5,
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLwd7LtDWg-5-G43HOwuyRJl3eSse2iZ4lzmrfYCpz1-aNrE87OjI76WA-KOSfGz40DKI&usqp=CAU",
-    },
-  ]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function getData() {
+      setLoading(true);
+      const data = await getDocs(moviesRef);
+      // console.log(data);
+      data.forEach((doc) => {
+        setData((prev) => [...prev, { ...doc.data(), id: doc.id }]);
+      });
+
+      setLoading(false);
+    }
+    getData();
+  }, []);
 
   return (
-    <div className="flex flex-wrap justify-between p-3 mt-2 ">
-      {data.map((e, i) => {
-        return (
-          <div
-            key={i}
-            className="card  font-medium shadow-lg p-2 hover:-translate-y-3 cursor-pointer mt-6 transition-all duration-500"
-          >
-            <img className="h-72" src={e.img} alt="poster" />
-            <h1>
-              <span className="text-gray-500">Name :</span>
-              {e.name}
-            </h1>
-            <h1 className="flex items-center">
-              <span className="text-gray-500 mr-1">Rating :</span>
+    <div className="flex flex-wrap justify-between px-3 mt-2 ">
+      {loading ? (
+        <div className="w-full flex justify-center items-center h-96">
+          {" "}
+          <ThreeDots height={40} color="white" />
+        </div>
+      ) : (
+        data.map((e, i) => {
+          return (
+            <div
+              key={i}
+              className="card  font-medium shadow-lg p-2 hover:-translate-y-3 cursor-pointer mt-6 transition-all duration-500"
+            >
+              <img className="h-60 md:h-72" src={e.image} alt="poster" />
+              <h1>
+                <span className="text-gray-500">Name :</span>
+                {e.title}
+              </h1>
+              <h1 className="flex items-center">
+                <span className="text-gray-500 mr-1">Rating :</span>
 
-              <ReactStars size={20} half={true} value={e.rating} edit={false} />
-            </h1>
-            <h1>
-              <span className="text-gray-500">Year : </span>
-              {e.year}
-            </h1>
-          </div>
-        );
-      })}
+                <ReactStars size={20} half={true} value={5} edit={false} />
+              </h1>
+              <h1>
+                <span className="text-gray-500">Year : </span>
+                {e.year}
+              </h1>
+            </div>
+          );
+        })
+      )}
     </div>
   );
 };
