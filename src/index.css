@@ -10,6 +10,10 @@ body {
 .card {
   background-color: rgb(19, 19, 19);
 }
+img {
+  max-width: 80 vw;
+  width: 250px;
+}
 .header {
   background-color: #15161a;
 }

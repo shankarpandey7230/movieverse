@@ -21,6 +21,12 @@ const AddMovie = () => {
         buttons: false,
         timer: 3000,
       });
+      setForm({
+        title: "",
+        year: "",
+        description: "",
+        image: "",
+      });
     } catch (err) {
       swal({
         title: err,
@@ -37,17 +43,14 @@ const AddMovie = () => {
         <div className="container px-5 py-8 mx-auto">
           <div className="flex flex-col text-center w-full mb-4">
             <h1 className="sm:text-3xl text-xl font-medium title-font mb-4 text-white">
-              Add New Movie
+              Add Movie
             </h1>
           </div>
           <div className="lg:w-1/2 md:w-2/3 mx-auto">
             <div className="flex flex-wrap -m-2">
               <div className="p-2 w-1/2">
                 <div className="relative">
-                  <label
-                    htmlFor="name"
-                    className="leading-7 text-sm text-gray-300"
-                  >
+                  <label for="name" className="leading-7 text-sm text-gray-300">
                     Title
                   </label>
                   <input
@@ -58,14 +61,14 @@ const AddMovie = () => {
                     onChange={(e) =>
                       setForm({ ...form, title: e.target.value })
                     }
-                    className="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-600 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
               <div className="p-2 w-1/2">
                 <div className="relative">
                   <label
-                    htmlFor="email"
+                    for="email"
                     className="leading-7 text-sm text-gray-300"
                   >
                     Year
@@ -76,17 +79,17 @@ const AddMovie = () => {
                     name="email"
                     value={form.year}
                     onChange={(e) => setForm({ ...form, year: e.target.value })}
-                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
-                    htmlFor="message"
+                    for="message"
                     className="leading-7 text-sm text-gray-300"
                   >
-                    ImageLink
+                    Image Link
                   </label>
                   <input
                     id="message"
@@ -95,14 +98,14 @@ const AddMovie = () => {
                     onChange={(e) =>
                       setForm({ ...form, image: e.target.value })
                     }
-                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                  ></input>
+                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
                 </div>
               </div>
               <div className="p-2 w-full">
                 <div className="relative">
                   <label
-                    htmlFor="message"
+                    for="message"
                     className="leading-7 text-sm text-gray-300"
                   >
                     Description
@@ -114,7 +117,7 @@ const AddMovie = () => {
                     onChange={(e) =>
                       setForm({ ...form, description: e.target.value })
                     }
-                    className="w-full bg-white  rounded border border-gray-300 focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
               </div>
