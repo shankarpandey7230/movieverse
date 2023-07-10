@@ -12,7 +12,7 @@ const Login = () => {
       <h1 className="text-xl font-bold">Login</h1>
       <div className="p-2  w-full md:w-1/3 ">
         <div className="relative">
-          <label for="message" className="leading-7 text-sm text-gray-300">
+          <label htmlFor="message" className="leading-7 text-sm text-gray-300">
             Mobile Number
           </label>
           <input
@@ -27,7 +27,7 @@ const Login = () => {
       </div>
       <div className="p-2 w-full md:w-1/3">
         <div className="relative">
-          <label for="message" className="leading-7 text-sm text-gray-300">
+          <label htmlFor="message" className="leading-7 text-sm text-gray-300">
             Password
           </label>
           <input
