@@ -1,25 +1,25 @@
-import React, { useContext, useState } from "react";
-import { TailSpin } from "react-loader-spinner";
-import { Link, useNavigate } from "react-router-dom";
-import { query, where, getDocs } from "firebase/firestore";
-import { usersRef } from "../firebase/firebase";
-import { AppState } from "../App";
-import bcrypt from "bcryptjs";
-import swal from "sweetalert";
+import React, { useContext, useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
+import { Link, useNavigate } from 'react-router-dom';
+import { query, where, getDocs } from 'firebase/firestore';
+import { usersRef } from '../firebase/firebase';
+import { AppState } from '../App';
+import bcrypt from 'bcryptjs';
+import swal from 'sweetalert';
 
 const Login = () => {
   const navigate = useNavigate();
   const useAppstate = useContext(AppState);
   const [form, setForm] = useState({
-    mobile: "",
-    password: "",
+    mobile: '',
+    password: '',
   });
   const [loading, setLoading] = useState(false);
 
   const login = async () => {
     setLoading(true);
     try {
-      const quer = query(usersRef, where("mobile", "==", form.mobile));
+      const quer = query(usersRef, where('mobile', '==', form.mobile));
       const querySnapshot = await getDocs(quer);
 
       querySnapshot.forEach((doc) => {
@@ -29,16 +29,16 @@ const Login = () => {
           useAppstate.setLogin(true);
           useAppstate.setUserName(_data.name);
           swal({
-            title: "Logged In",
-            icon: "success",
+            title: 'Logged In',
+            icon: 'success',
             buttons: false,
             timer: 3000,
           });
-          navigate("/");
+          navigate('/');
         } else {
           swal({
-            title: "Invalid Credentials",
-            icon: "error",
+            title: 'Invalid Credentials',
+            icon: 'error',
             buttons: false,
             timer: 3000,
           });
@@ -47,7 +47,7 @@ const Login = () => {
     } catch (error) {
       swal({
         title: error.message,
-        icon: "error",
+        icon: 'error',
         buttons: false,
         timer: 3000,
       });
@@ -64,7 +64,7 @@ const Login = () => {
             Mobile No.
           </label>
           <input
-            type={"number"}
+            type={'number'}
             id="message"
             name="message"
             value={form.mobile}
@@ -79,6 +79,7 @@ const Login = () => {
             Password
           </label>
           <input
+            type="password"
             id="message"
             name="message"
             value={form.password}
@@ -92,13 +93,13 @@ const Login = () => {
           onClick={login}
           class="flex mx-auto text-white bg-green-600 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg"
         >
-          {loading ? <TailSpin height={25} color="white" /> : "Login"}
+          {loading ? <TailSpin height={25} color="white" /> : 'Login'}
         </button>
       </div>
       <div>
         <p>
-          Do not have account?{" "}
-          <Link to={"/signup"}>
+          Do not have account?{' '}
+          <Link to={'/signup'}>
             <span className="text-blue-500">Sign Up</span>
           </Link>
         </p>
